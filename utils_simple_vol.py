@@ -127,10 +127,10 @@ class uncertain_vol:
             for t in range(self.N):
                 b = 4*U - U_pre
                 c = b + self.dt*self.sigma**2*q
+                
+                U_pre = U.copy()
                 U, errs = self.newton_bis(U, B, b, C, c, 0.0001, 100)
 #                 print(f"Errors : \n", errs, '\n')
-                U_pre = U.copy()
-            
         return U
 
 def schema_plot(I, N, T=0.5, sigma=0.5, schema="EE"):
